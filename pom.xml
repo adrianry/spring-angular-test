@@ -7,11 +7,14 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
-        <artifactId>parent-boot-2</artifactId>
-	    <groupId>com.baeldung</groupId>
-	    <version>0.0.1-SNAPSHOT</version>
-	    <relativePath>../../parent-boot-2</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.0.RELEASE</version>
     </parent>
 
     <dependencies>
