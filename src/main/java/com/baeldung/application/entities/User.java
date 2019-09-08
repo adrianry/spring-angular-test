@@ -13,16 +13,21 @@ public class User {
     private long id;
     private final String name;
     private final String email;
+    private final String adresse;
     
     public User() {
         this.name = "";
+        this.adresse = "";
         this.email = "";
     }
     
-    public User(String name, String email) {
+    public User(String name, String adresse, String email) {
         this.name = name;
+        this.adresse = adresse;
         this.email = email;
     }
+
+
 
     public long getId() {
         return id;
@@ -35,9 +40,13 @@ public class User {
     public String getEmail() {
         return email;
     }
+
+    public String getAdresse() {
+        return adresse;
+    }
     
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
+        return "User{" + "id=" + id + ", name=" + name + ", adresse=" + adresse + ", email=" + email + '}';
     }
 }
