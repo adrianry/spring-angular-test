@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -16,7 +17,20 @@ export class UserService {
     return this.http.get<User[]>(this.usersUrl);
   }
 
+
+  public getUser(id: number): Observable<User> {
+        const url = `${this.usersUrl}/${id}`;
+        return this.http.get<User>(url).pipe(
+        tap(_ => console.log(`fetched user id=${id}`))
+      );
+    }
+
   public save(user: User) {
     return this.http.post<User>(this.usersUrl, user);
   }
+
+  public update(user: User) {
+      return this.http.post<User>(this.usersUrl+"/edit", user);
+  }
+
 }
