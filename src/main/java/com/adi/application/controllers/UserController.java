@@ -1,7 +1,7 @@
-package com.baeldung.application.controllers;
+package com.adi.application.controllers;
 
-import com.baeldung.application.entities.User;
-import com.baeldung.application.repositories.UserRepository;
+import com.adi.application.entities.User;
+import com.adi.application.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
