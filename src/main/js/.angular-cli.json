@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "../resources/static",
+      "outDir": "../resources/static/adisapp",
       "assets": [
         "assets",
         "favicon.ico"

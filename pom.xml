@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.adi.springbootangular</groupId>
     <artifactId>adis-spring-boot-angular-test</artifactId>
     <name>spring-boot-angular</name>
     <version>1.0</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.8.RELEASE</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.8.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.camunda.bpm</groupId>
+                <artifactId>camunda-bom</artifactId>
+                <version>7.11.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -22,10 +44,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-        <groupId>org.camunda.bpm.springboot</groupId>
-        <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
-        <version>3.3.1</version>
-    </dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-webapp</artifactId>
+            <version>3.3.1</version>
+        </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -36,6 +58,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -50,6 +77,21 @@
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/resources/static</directory>
+                            <includes>
+                                <include>**</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -61,9 +103,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <layout>ZIP</layout>
-                </configuration>
+                <version>2.1.8.RELEASE</version>
+                <!--                <configuration>-->
+                <!--                    <layout>ZIP</layout>-->
+                <!--                </configuration>-->
                 <executions>
                     <execution>
                         <goals>
@@ -85,7 +128,7 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-<!--                            <skip>true</skip>-->
+                            <skip>true</skip>
                             <workingDirectory>src/main/js</workingDirectory>
                             <nodeVersion>v12.6.0</nodeVersion>
                             <npmVersion>6.11.3</npmVersion>
@@ -115,54 +158,8 @@
                             <arguments>run-script build</arguments>
                         </configuration>
                     </execution>
-<!--                    <execution>
-                        <id>javascript tests</id>
-                        <goals>
-                            <goal>karma</goal>
-                        </goals>
-                        <configuration>
-                            <karmaConfPath>src/main/js/karma.conf.js</karmaConfPath>
-                        </configuration>
-                    </execution>-->
                 </executions>
             </plugin>
-            <!--
-        <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.6.0</version>
-        <executions>
-            <id>npm install (initialize)</id>
-            <goals>
-                <goal>exec</goal>
-            </goals>
-            <phase>initialize</phase>
-            <configuration>
-                <executable>npm</executable>
-                <arguments>
-                    <argument>install</argument>
-                </arguments>
-                <workingDirectory>angularclient</workingDirectory>
-            </configuration>
-        </execution>
-
-        <execution>
-            <id>npm run build (compile)</id>
-            <goals>
-                <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-                <executable>npm</executable>
-                <arguments>
-                    <argument>start</argument>
-                </arguments>
-                <workingDirectory>angularclient</workingDirectory>
-            </configuration>
-        </execution>
-        </executions>
-        </plugin>
--->
         </plugins>
     </build>
 </project>

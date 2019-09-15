@@ -1,3 +1,6 @@
 target/
-angularclient/node_modules/
 .idea
+/src/main/js/node/
+/src/main/js/node_modules/
+/src/main/js/package-lock.json
+/src/main/resources/static/adisapp/

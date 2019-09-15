@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/user';
+import { Process } from '../model/process';
 import { UserService } from '../service/user.service';
+import { ProcessService } from '../service/process.service';
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +13,7 @@ export class UserListComponent implements OnInit {
 
   users: User[];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private processService: ProcessService) {
 
   }
 
@@ -20,4 +22,9 @@ export class UserListComponent implements OnInit {
       this.users = data;
     });
   }
+
+  startProcess(){
+      console.log("function starte Prozess called");
+      this.processService.startProcess().subscribe(process => console.log("Process = " + process.id + " businesskey = " + process.businesskey));
+    }
 }
