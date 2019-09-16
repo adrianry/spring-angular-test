@@ -43,7 +43,7 @@ public class Application {
 
     @EventListener
     private void processPostDeploy(PostDeployEvent event) {
-        System.out.println("Starte Prozess...");
+        System.out.println("Starte Prozess ...");
         ProcessInstance instance = runtimeService.startProcessInstanceByKey("test1");
         System.out.println(instance.getId());
     }

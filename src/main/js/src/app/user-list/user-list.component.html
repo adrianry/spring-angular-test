@@ -22,5 +22,21 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Businesskey</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let process of processes">
+          <td>{{ process.id }}</td>
+          <td>{{ process.businesskey }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

@@ -9,3 +9,18 @@ camunda.bpm:
     index-redirect-enabled: true
   job-execution:
     deployment-aware: true
+
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  datasource:
+    url: jdbc:h2:file:./database:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa.database-platform: org.hibernate.dialect.H2Dialect

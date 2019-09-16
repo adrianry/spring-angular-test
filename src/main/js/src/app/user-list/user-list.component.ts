@@ -12,6 +12,7 @@ import { ProcessService } from '../service/process.service';
 export class UserListComponent implements OnInit {
 
   users: User[];
+  processes: Process[];
 
   constructor(private userService: UserService, private processService: ProcessService) {
 
@@ -20,6 +21,9 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.userService.findAll().subscribe(data => {
       this.users = data;
+    });
+    this.processService.listAll().subscribe(processdata => {
+          this.processes = processdata;
     });
   }
 

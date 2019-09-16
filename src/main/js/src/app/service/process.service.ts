@@ -20,6 +20,12 @@ export class ProcessService {
       );
     }
 
+     public listAll(): Observable<Process[]> {
+           return this.http.get<Process[]>(this.processUrl).pipe(
+           tap(_ => console.log(`fetched all processes`))
+         );
+      }
+
 
   public startProcess(): Observable<Process> {
     return this.http.post<Process>(this.processUrl, "test1");
