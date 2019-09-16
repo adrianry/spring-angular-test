@@ -4,3 +4,5 @@ target/
 /src/main/js/node_modules/
 /src/main/js/package-lock.json
 /src/main/resources/static/adisapp/
+/database:testdb.mv.db
+/database:testdb.trace.db
